@@ -1,0 +1,7 @@
+breakout.png
+size:128,64
+repeat:none
+Sprite-0001
+bounds:36,2,32,32
+Sprite-0002
+bounds:2,2,32,32

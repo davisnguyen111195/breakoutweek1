@@ -3,6 +3,7 @@ package io.github.week1ktx2.loader
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver
 import com.badlogic.gdx.graphics.g2d.BitmapFont
+import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader
@@ -12,9 +13,12 @@ class BreakoutAssetManager {
     private val gameFont: String = "assets/GAMER.otf"
     val fontLarge: String = "size72.otf"
     val fontMedium: String = "size36.otf"
-
+    val gameImages = "assets/breakout.atlas"
     val manager: AssetManager = AssetManager()
 
+    fun queueAddImage() {
+        manager.load(gameImages, TextureAtlas::class.java)
+    }
     fun queueAddFonts() {
         manager.setLoader(
             FreeTypeFontGenerator::class.java,
