@@ -44,8 +44,10 @@ class GameScreen(private val game: Main) : Screen {
         }
         camera = OrthographicCamera()
         viewport = StretchViewport(PPMWidth, PPMHeight, camera)
-        tiledMap = mapLoader.load("levelmap1.tmx")
+        tiledMap = mapLoader.load("test.tmx")
+
         brickLayer = tiledMap.layers.get("brick")
+        println(brickLayer.objects)
         textures = game.assetManager.manager.get(game.assetManager.gameImages)
         engine = Engine()
         brickCreate()
@@ -53,7 +55,7 @@ class GameScreen(private val game: Main) : Screen {
     }
 
     override fun render(delta: Float) {
-        Gdx.gl.glClearColor(0f,0f,0f,1f); //  clear the screen
+        //Gdx.gl.glClearColor(0f,0f,0f,1f); //  clear the screen
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         engine.update(delta)
         hud.update()
@@ -63,7 +65,7 @@ class GameScreen(private val game: Main) : Screen {
 
     }
 
-    fun brickCreate(){
+    private fun brickCreate(){
         val textureBrick = TextureRegion(textures.findRegion("Sprite-0001"))
         println(textureBrick)
         for(obj in brickLayer.objects){
